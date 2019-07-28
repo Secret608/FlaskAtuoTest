@@ -8,19 +8,32 @@ from flask import Blueprint
 
 index = Blueprint('index', __name__)
 
-
 @index.route('/index', methods=['GET'])
 def indexPage():
-    return render_template("index.html")
+    listDate = ["111111111111111111111111111",2,3]
+    return render_template("index.html",listDate = listDate)
 
 @index.route('/forms', methods=["GET", 'POST'])
 def forms():
-    return render_template("forms.html")
+    return render_template("index.html")
 
 @index.route('/tables', methods=["GET", 'POST'])
 def tables():
-    return render_template("tables.html")
+    return render_template("index.html")
 
 @index.route('/components', methods=["GET", 'POST'])
 def components():
-    return render_template("components.html")
+    return render_template("index.html")
+
+@index.route('/notifications', methods=["GET", 'POST'])
+def notifications():
+    return render_template("index.html")
+
+@index.route('/typography', methods=["GET", 'POST'])
+def typography():
+    return render_template("index.html")
+
+
+@index.route('/icons', methods=["GET", 'POST'])
+def icons():
+    return render_template("index.html")

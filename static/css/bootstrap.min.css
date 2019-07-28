@@ -8781,7 +8781,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .text-right {
-    text-align: right !important
+    text-align: left !important
 }
 
 .text-center {

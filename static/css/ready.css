@@ -71,9 +71,9 @@ h6, .h6 {
 }
 
 p {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
-  margin-bottom: .7rem;
+  margin-bottom: 0rem;
 }
 
 h4.page-title {
@@ -5101,7 +5101,7 @@ body {
   margin-bottom: 0px;
 }
 .card .card-body {
-  padding: 15px 15px 10px 15px;
+  padding: 0px 8px 0px 0px;
 }
 .card .card-footer {
   background-color: transparent;
@@ -5154,12 +5154,13 @@ body {
   line-height: 1.8;
 }
 .card-tasks .card-body .table td .btn {
-  font-size: 17px;
+  font-size: 14px;
   opacity: 0.7;
   transition: all .3s;
 }
-.card-tasks .card-body .table td:hover .btn {
+.card-tasks .card-body .table td .btn:hover {
   opacity: 1;
+  font-weight: bold;
 }
 
 .card-default, .card-primary, .card-info, .card-success, .card-warning, .card-danger {
@@ -5546,10 +5547,10 @@ body {
 }
 
 /* table full-width */
-.table-full-width {
-  margin-left: -15px;
-  margin-right: -15px;
-}
+/*.table-full-width {*/
+  /*margin-left: -15px;*/
+  /*margin-right: -15px;*/
+/*}*/
 
 /* table bordered states */
 .table-bordered-bd-default td, .table-bordered-bd-default th {
@@ -6064,7 +6065,7 @@ body {
 
 /*    Button    */
 .btn {
-  padding: 8px 16px;
+  padding: 2px 8px;
   font-size: 14px;
   opacity: 0.9;
   border-radius: 3px;

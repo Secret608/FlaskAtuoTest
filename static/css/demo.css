@@ -40,7 +40,7 @@
 }
 
 .demo .btn, .demo .progress{
-	margin-bottom: 15px !important;
+	margin-bottom: 0px !important;
 }
 
 .demo .form-check-label, .demo .form-radio-label{

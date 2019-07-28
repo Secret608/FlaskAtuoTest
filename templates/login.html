@@ -15,10 +15,10 @@
     <style>
         body {
             /*background-color: #2D2D2D;*/
-            background-image: url("timg");
+            background-image: url("/static/timg.jpg");
             background-repeat: no-repeat;
             background-position: center;
-            background-size: cover );
+            background-size: cover; );
         }
 
         .form {
@@ -99,7 +99,7 @@
         if (!(name && pasd)) {
             alert("空");
         }
-        else if (name != "Admin" || pasd != "111111") {
+        else if (name!="Admin"||pasd!="111111") {
             alert("大哥，用户名或者密码错了!");
         }
         else {
@@ -114,7 +114,7 @@
             vy: 2.5,	//小球y轴速度
             height: 2,	//小球高宽，其实为正方形，所以不宜太大
             width: 2,
-            count: 150,		//点个数
+            count: 100,		//点个数
             color: "121,162,185", 	//点颜色
             stroke: "130,255,255", 		//线条颜色
             dist: 6000, 	//点吸附距离
@@ -153,14 +153,14 @@
             canvasSize(canvas.element);
             window.onresize = function () {
                 canvasSize(canvas.element);
-            }
+            };
             body.onmousemove = function (e) {
                 var event = e || window.event;
                 canvas.mouse = {x: event.clientX, y: event.clientY}
-            }
+            };
             document.onmouseleave = function () {
                 canvas.mouse = undefined;
-            }
+            };
             setInterval(function () {
                 drawPoint(canvas);
             }, 40);

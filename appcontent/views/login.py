@@ -25,14 +25,14 @@ def loginInto():
 
 #app.add_url_rule(‘/’, hello_world).
 
-@login.route('/timg', methods=['GET'])
-def loginImage():
-    print os.getcwd()
-    path = r"F:FlaskTest\static\timg.jpg"
-    f = open(path, "rb")
-    return Response(f)
-
-# @login.route('/timg')
+# @login.route('/timg', methods=['GET'])
 # def loginImage():
-#     return url_for('static', filename='timg.jpg')
+#     path = os.path.abspath(r"./static/timg.jpg")
+#     print path
+#     f = open(path, "rb")
+#     return Response(f)
+
+@login.route('/timg')
+def loginImage():
+    return url_for('static', filename='timg.jpg')
 
