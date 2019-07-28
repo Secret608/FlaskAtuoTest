@@ -9,6 +9,7 @@
     <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"-->
     <link rel="stylesheet" href="static/css/ready.css">
     <link rel="stylesheet" href="static/css/demo.css">
+
 </head>
 <body>
 <div class="wrapper">
@@ -123,7 +124,7 @@
                                         <h4>xiaofeng.zhang</h4>
 
                                         <p class="text-muted">xiaofeng.zhang@163.com</p><a href="profile"
-                                                                                                  class="btn btn-rounded btn-danger btn-sm">View
+                                                                                           class="btn btn-rounded btn-danger btn-sm">View
                                         Profile</a></div>
                                 </div>
                             </li>
@@ -163,16 +164,7 @@
 
                     <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
                         <ul class="nav">
-                            {#                        <li>#}
-                            {#                            <a href="#profile">#}
-                            {#                                <span class="link-collapse">My Profile</span>#}
-                            {#                            </a>#}
-                            {#                        </li>#}
-                            {#                        <li>#}
-                            {#                            <a href="#edit">#}
-                            {#                                <span class="link-collapse">Edit Profile</span>#}
-                            {#                            </a>#}
-                            {#                        </li>#}
+
                             <li>
                                 <a href="#settings">
                                     <span class="link-collapse">哦豁，加载失败了！</span>
@@ -240,7 +232,6 @@
                 <li class="nav-item update-pro">
                     <button data-toggle="modal" data-target="#modalUpdate">
                         <i class="la la-hand-pointer-o"></i>
-
                         <p>Upload</p>
                     </button>
                 </li>
@@ -254,13 +245,19 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card-tasks">
-                            <div class="card-header " >
+                            <div class="card-header ">
                                 <h4 class="card-title">UI自动化测试</h4>
                                 <div style="display: inline-flex">
                                     <p class="card-category">项目列表</p>
-                                    <button class="btn btn-success" style="right: 10px; position: absolute; padding: 6px 20px;">新建</button>
-                                    <button class="btn btn-simple-info" style="right: 80px; position: absolute; padding: 6px 20px;">刷新</button>
-                                    <button class="btn btn-danger" style="right: 150px; position: absolute; padding: 6px 20px;">自爆</button>
+                                    <button class="btn btn-success"
+                                            style="right: 10px; position: absolute; padding: 6px 20px;">邮件
+                                    </button>
+                                    <button class="btn btn-simple-info"
+                                            style="right: 80px; position: absolute; padding: 6px 20px;">刷新
+                                    </button>
+                                    <button class="btn btn-danger"
+                                            style="right: 150px; position: absolute; padding: 6px 20px;">Jenkins
+                                    </button>
                                 </div>
 
                             </div>
@@ -270,42 +267,30 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            {#                                            <th>#}
-                                            {#                                                <div class="form-check">#}
-                                            {#                                                    <label class="form-check-label">#}
-                                            {#                                                        <input class="form-check-input  select-all-checkbox"#}
-                                            {#                                                               type="checkbox"#}
-                                            {#                                                               data-select="checkbox" data-target=".task-select">#}
-                                            {#                                                        <span class="form-check-sign"></span>#}
-                                            {#                                                    </label>#}
-                                            {#                                                </div>#}
-                                            {#                                            </th>#}
                                             <th>项目名称</th>
-                                            <th>状态</th>
-                                            <th>最后执行时间</th>
-                                            <th>操作</th>
+                                            <th>项目描述</th>
+                                            <th>执行时间</th>
+                                            <th>执行状态</th>
+                                            <th>执行操作</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         {% for i in listDate %}
                                             <tr>
-                                                {#                                            <td>#}
-                                                {#                                                <div class="form-check">#}
-                                                {#                                                    <label class="form-check-label">#}
-                                                {#                                                        <input class="form-check-input task-select" type="checkbox">#}
-                                                {#                                                        <span class="form-check-sign"></span>#}
-                                                {#                                                    </label>#}
-                                                {#                                                </div>#}
-                                                {#                                            </td>#}
-                                                <td>{{ i }}</td>
-                                                <td>{{ i }}</td>
-                                                <td>{{ i }}</td>
+                                                <td>{{ i[0] }}</td>
+                                                <td>{{ i[1] }}</td>
+                                                <td>{{ i[2] }}</td>
+                                                <td>
+                                                    <div class="demo-icon">
+                                                        <div class="icon-preview">
+                                                            <i class="la la-exclamation-triangle"></i></div>
+
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="card-body" style="display: inline-flex">
                                                         <p class="demo">
-                                                            {#											<button class="btn btn-default">Default</button>#}
-                                                            {##}{#										<button class="btn btn-primary">Primary</button>#}
-                                                            <button class="btn btn-success">运行</button>
+                                                            <button  class="btn btn-success" id={{ i[0] }}>运行</button>
                                                         </p>
                                                         <p class="demo">
                                                             <button class="btn badge-light">修改</button>
@@ -314,10 +299,8 @@
                                                             <button class="btn btn-danger">删除</button>
                                                         </p>
                                                         <p class="demo">
-                                                            <button class="btn btn-info">报告</button>
+                                                            <button class="btn btn-info" onclick="window.location.href = 'icons'">报告</button>
                                                         </p>
-
-
                                                     </div>
                                                 </td>
                                             </tr>
@@ -328,7 +311,7 @@
                             </div>
                             <div class="card-footer ">
                                 <div class="stats">
-                                    <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+                                    <i class="now-ui-icons loader_refresh spin"></i> 如有疑问可联系管理员（xiaofeng.zhang@163.com）
                                 </div>
                             </div>
                         </div>
@@ -404,4 +387,5 @@
 <script src="static/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 <script src="static/js/ready.min.js"></script>
 <script src="static/js/demo.js"></script>
+<script src="static/js/index.js"></script>
 </html>
