@@ -1,0 +1,36 @@
+.alter_0 {
+    display: none;
+}
+
+.alter_a {
+
+  opacity: 0.7;
+  display: block;
+  right: 40%;
+  position: absolute;
+  font-size: 14px;
+  padding: 8px 40px;
+  background: green;
+  color: white;
+  width: 20%;
+  text-align: center;
+  border-radius: 10px;
+
+}
+
+.alter_ {
+
+  opacity: 0.7;
+  display: block;
+  right: 40%;
+  position: absolute;
+  font-size: 14px;
+  padding: 8px 40px;
+  background: red;
+  color: white;
+  width: 20%;
+  text-align: center;
+  border-radius: 10px;
+
+
+}

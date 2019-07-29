@@ -9,6 +9,7 @@
     <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"-->
     <link rel="stylesheet" href="static/css/ready.css">
     <link rel="stylesheet" href="static/css/demo.css">
+    <link rel="stylesheet" href="static/css/alter.css">
 
 </head>
 <body>
@@ -245,23 +246,23 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card-tasks">
-                            <div class="card-header ">
+                            <div class="card-header " style="display: inline-flex">
                                 <h4 class="card-title">UI自动化测试</h4>
-                                <div style="display: inline-flex">
-                                    <p class="card-category">项目列表</p>
+                                <div id="tip"></div>
+
+                            <div style="display: inline-flex">
+{#                                    <p class="card-category">项目列表</p>#}
                                     <button class="btn btn-success"
                                             style="right: 10px; position: absolute; padding: 6px 20px;">邮件
                                     </button>
                                     <button class="btn btn-simple-info"
-                                            style="right: 80px; position: absolute; padding: 6px 20px;">刷新
+                                            style="right: 80px; position: absolute; padding: 6px 20px;" onclick="window.location='/index'">刷新
                                     </button>
                                     <button class="btn btn-danger"
                                             style="right: 150px; position: absolute; padding: 6px 20px;">Jenkins
                                     </button>
                                 </div>
-
-                            </div>
-
+</div>
                             <div class="card-body ">
                                 <div class="table-full-width">
                                     <table class="table">
@@ -299,7 +300,7 @@
                                                             <button class="btn btn-danger">删除</button>
                                                         </p>
                                                         <p class="demo">
-                                                            <button class="btn btn-info" onclick="window.location.href = 'icons'">报告</button>
+                                                            <button class="btn btn-info">报告</button>
                                                         </p>
                                                     </div>
                                                 </td>
