@@ -11,7 +11,7 @@ class Getlog():
             self.logger.setLevel(logging.ERROR)
         timestr = time.strftime("%Y%m%d_%H%M%S", time.localtime())
         self.filePath = os.path.join("..\log", name+timestr)
-        print self.filePath
+        print(self.filePath)
         with open(self.filePath, "w"):
             pass
 

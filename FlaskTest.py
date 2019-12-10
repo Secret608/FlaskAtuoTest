@@ -13,7 +13,7 @@ class Main():
 
     def __init__(self):
         self.app = app
-        self.globalsPath = GetPath().getCurrentPath()
+        self.runPath = GetPath().getCurrentPath()
         #self.logger = Getlog(app, "1").startLog()
 
     def add_views_path(self):
@@ -25,5 +25,4 @@ if __name__ == '__main__':
 
     main = Main()
     main.add_views_path()
-
     main.app.run(debug=True, host='127.0.0.1', port=5000, threaded=True)

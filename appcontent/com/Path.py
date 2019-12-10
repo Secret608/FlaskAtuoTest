@@ -23,4 +23,4 @@ class GetPath():
 
 
 if __name__ == '__main__':
-    print(GetPath().getGlobalPath(""))
+    print(GetPath.__module__)

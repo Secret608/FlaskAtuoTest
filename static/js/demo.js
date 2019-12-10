@@ -87,6 +87,8 @@ var responsiveChartSales = [
 
 Chartist.Bar('#salesChart', dataSales, optionChartSales, responsiveChartSales);
 
+
+
 $(".mapcontainer").mapael({
 	map : {
 		name : "world_countries",

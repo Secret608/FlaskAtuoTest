@@ -247,19 +247,19 @@
                     <div class="col-md-12">
                         <div class="card card-tasks">
                             <div class="card-header " style="display: inline-flex">
-                                <h4 class="card-title">UI自动化测试</h4>
+                                <h4 class="card-title">工作小结</h4>
                                 <div id="tip"></div>
 
                             <div style="display: inline-flex">
 {#                                    <p class="card-category">项目列表</p>#}
-                                    <button class="btn btn-success"
-                                            style="right: 10px; position: absolute; padding: 6px 20px;">邮件
+                                    <button id ="btn_add" class="btn btn-success"
+                                            style="right: 10px; position: absolute; padding: 6px 20px;">添加
                                     </button>
                                     <button class="btn btn-simple-info"
-                                            style="right: 80px; position: absolute; padding: 6px 20px;" onclick="window.location='/index'">刷新
+                                            style="right: 80px; position: absolute; padding: 6px 20px;" onclick="window.location='/index'">预览
                                     </button>
                                     <button class="btn btn-danger"
-                                            style="right: 150px; position: absolute; padding: 6px 20px;">Jenkins
+                                            style="right: 150px; position: absolute; padding: 6px 20px;">MD
                                     </button>
                                 </div>
 </div>
@@ -268,11 +268,11 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>项目名称</th>
-                                            <th>项目描述</th>
-                                            <th>执行时间</th>
-                                            <th>执行状态</th>
-                                            <th>执行操作</th>
+                                            <th>编辑时间</th>
+                                            <th>本周工作重点</th>
+                                            <th>下周工作计划</th>
+                                            <th>编辑人</th>
+                                            <th>操作</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -281,26 +281,16 @@
                                                 <td>{{ i[0] }}</td>
                                                 <td>{{ i[1] }}</td>
                                                 <td>{{ i[2] }}</td>
+                                                <td>{{ i[3] }}</td>
                                                 <td>
-                                                    <div class="demo-icon">
-                                                        <div class="icon-preview">
-                                                            <i class="la la-exclamation-triangle"></i></div>
 
-                                                    </div>
-                                                </td>
-                                                <td>
                                                     <div class="card-body" style="display: inline-flex">
-                                                        <p class="demo">
-                                                            <button  class="btn btn-success" id={{ i[0] }}>运行</button>
-                                                        </p>
+
                                                         <p class="demo">
                                                             <button class="btn badge-light">修改</button>
                                                         </p>
                                                         <p class="demo">
-                                                            <button class="btn btn-danger">删除</button>
-                                                        </p>
-                                                        <p class="demo">
-                                                            <button class="btn btn-info">报告</button>
+                                                            <button id="{{ i[0] }}" class="btn btn-danger">删除</button>
                                                         </p>
                                                     </div>
                                                 </td>
@@ -320,33 +310,33 @@
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                ThemeKita
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#license/#free-item">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright ml-auto">
-                    Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
-                                                                              href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-                </div>
-            </div>
-        </footer>
+{#        <footer class="footer">#}
+{#            <div class="container-fluid">#}
+{#                <nav class="pull-left">#}
+{#                    <ul class="nav">#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#">#}
+{#                                ThemeKita#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#">#}
+{#                                Help#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#license/#free-item">#}
+{#                                Licenses#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </nav>#}
+{#                <div class="copyright ml-auto">#}
+{#                    Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"#}
+{#                                                                              href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </footer>#}
     </div>
 </div>
 </div>
@@ -373,7 +363,41 @@
         </div>
     </div>
 </div>
+
+
+{#添加弹窗#}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">新增</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="txt_departmentname">本周工作重点</label>
+                        <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="请疯狂输出">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_departmentlevel">下周工作计划</label>
+                        <input type="text" name="txt_departmentlevel" class="form-control" id="txt_departmentlevel" placeholder="请大胆展望">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_statu">你是谁</label>
+                        <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="请让我知道你是哪位大神">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 <script src="static/js/core/jquery.3.2.1.min.js"></script>
 <script src="static/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="static/js/core/popper.min.js"></script>
