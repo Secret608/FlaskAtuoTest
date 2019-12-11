@@ -71,12 +71,12 @@
                                    name="password" maxlength="8"/>
                         </div>
 
-                        {#                    <div class="form-group">#}
+                  <!--       {#                    <div class="form-group">#}
                         {#                        <label class="checkbox">#}
                         {#                            <input type="checkbox" name="remember" value="1"/><a style="color: #ffff00">Username/Password<span#}
                         {#                                style="color: red">----</span>Admin/111111</a>#}
                         {#                        </label>#}
-                        {#                    </div>#}
+                        {#                    </div>#} -->
                         <div class="form-group col-md-offset-9">
                             <span style="color:#ff0000;"><b id="tips">{{ error_msg }}</b></span>
                             <button type="button" class="btn btn-success pull-right" id="submit" onclick="check()">登录
@@ -93,6 +93,7 @@
 
 <script type="text/javascript">
 
+
     function check() {
         var name = $("#username").val();
         var pasd = $("#password").val();
@@ -107,6 +108,12 @@
         }
     }
 
+    $('#password').keydown(function(e){
+        if(e.keyCode==13){
+        check(); //处理事件
+     }
+    });
+    
     window.onload = function () {
         //配置
         var config = {

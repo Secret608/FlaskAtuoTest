@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>主页</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -40,27 +41,27 @@
                     </div>
                 </form>
                 <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                    <li class="nav-item dropdown hidden-caret">
+                     <li class="nav-item dropdown hidden-caret">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="la la-envelope"></i>
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">发送报告邮件</a>
                             <a class="dropdown-item" href="#">既往邮件</a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">设置</a>
-                        </div>
-                    </li>
+                        </div> -->
+                    </li> 
                     <li class="nav-item dropdown hidden-caret">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="la la-bell"></i>
                             <span class="notification">3</span>
                         </a>
-                        <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+                        <!-- <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
                             <li>
                                 <div class="dropdown-title">您有4条新消息</div>
                             </li>
@@ -110,21 +111,21 @@
                                 <a class="see-all" href="javascript:void(0);"> <strong>查看所有信息</strong> <i
                                         class="la la-angle-right"></i> </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                             <img
                                     src="static/img/Live2D.jpg" alt="user-img" width="36"
                                     class="img-circle"><span>Secret</span></span> </a>
-                        <ul class="dropdown-menu dropdown-user">
+                        <!-- <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <div class="user-box">
                                     <div class="u-img"><img src="static/img/Live2D.jpg" alt="user"></div>
                                     <div class="u-text">
-                                        <h4>xiaofeng.zhang</h4>
+                                        <h4>qi.zhang</h4>
 
-                                        <p class="text-muted">xiaofeng.zhang@163.com</p><a href="profile"
+                                        <p class="text-muted">qi.zhang@163.com</p><a href="profile"
                                                                                            class="btn btn-rounded btn-danger btn-sm">View
                                         Profile</a></div>
                                 </div>
@@ -139,7 +140,7 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> 注销</a>
-                        </ul>
+                        </ul> -->
                         <!-- /.dropdown-user -->
                     </li>
                 </ul>
@@ -255,10 +256,10 @@
                                     <button id ="btn_add" class="btn btn-success"
                                             style="right: 10px; position: absolute; padding: 6px 20px;">添加
                                     </button>
-                                    <button class="btn btn-simple-info"
-                                            style="right: 80px; position: absolute; padding: 6px 20px;" onclick="window.location='/index'">预览
+                                    <button class="btn btn-simple-info" id="look"
+                                            style="right: 80px; position: absolute; padding: 6px 20px;">预览
                                     </button>
-                                    <button class="btn btn-danger"
+                                    <button  class="btn btn-danger" id="down"
                                             style="right: 150px; position: absolute; padding: 6px 20px;">MD
                                     </button>
                                 </div>
@@ -278,16 +279,16 @@
                                         <tbody>
                                         {% for i in listDate %}
                                             <tr>
-                                                <td>{{ i[0] }}</td>
                                                 <td>{{ i[1] }}</td>
-                                                <td>{{ i[2] }}</td>
-                                                <td>{{ i[3] }}</td>
+                                                <td class="{{ i[0] }}">{{ i[2] }}</td>
+                                                <td class="{{ i[0] }}">{{ i[3] }}</td>
+                                                <td class="{{ i[0] }}">{{ i[4] }}</td>
                                                 <td>
 
                                                     <div class="card-body" style="display: inline-flex">
 
                                                         <p class="demo">
-                                                            <button class="btn badge-light">修改</button>
+                                                            <button id="{{ i[0] }}" class="btn badge-light">修改</button>
                                                         </p>
                                                         <p class="demo">
                                                             <button id="{{ i[0] }}" class="btn btn-danger">删除</button>
@@ -302,7 +303,7 @@
                             </div>
                             <div class="card-footer ">
                                 <div class="stats">
-                                    <i class="now-ui-icons loader_refresh spin"></i> 如有疑问可联系管理员（xiaofeng.zhang@163.com）
+                                    <i class="now-ui-icons loader_refresh spin"></i> 如有疑问可联系管理员（qi.zhang@163.com）
                                 </div>
                             </div>
                         </div>
@@ -365,7 +366,7 @@
 </div>
 
 
-{#添加弹窗#}
+<!-- {#添加弹窗#} -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -377,7 +378,7 @@
 
                     <div class="form-group">
                         <label for="txt_departmentname">本周工作重点</label>
-                        <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="请疯狂输出">
+                        <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="请疯狂输出（建议一次一条）">
                     </div>
                     <div class="form-group">
                         <label for="txt_departmentlevel">下周工作计划</label>
@@ -385,7 +386,7 @@
                     </div>
                     <div class="form-group">
                         <label for="txt_statu">你是谁</label>
-                        <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="请让我知道你是哪位大神">
+                        <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="敢问你是哪位大神">
                     </div>
                 </div>
                 <div class="modal-footer">

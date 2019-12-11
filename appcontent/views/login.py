@@ -5,6 +5,7 @@ from flask import Flask
 from flask import Flask, redirect, url_for, render_template, request, Response
 import os, time
 from flask import Blueprint
+from appcontent.views.index import data_list
 
 login = Blueprint('login', __name__)
 
@@ -17,15 +18,7 @@ def loginInto():
     if request.method == 'POST':
         result = request.form
         if result.get("username") == "Admin" and result.get("password") == "111111":
-            listDate = [
-                        ("HM_ECG", u"心电Smoke", time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())),
-                        ("HM_INS", u"检验Smoke", time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())),
-                        ("HM_CLT", u"会诊Smoke", time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())),
-                        ("HM_RFR", u"转诊Smoke", time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())),
-                        ("HM_RSV", u"预约Smoke", time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())),
-                        ("HM_TNG", u"门诊Smoke", time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())),
-                        ]
-            return render_template("index.html", listDate=listDate)
+            return render_template("index.html", listDate=data_list.LIST_DATA)
         else:
             return render_template("login.html", error_msg=u"大哥看不见黄色字吗？")
     else:
