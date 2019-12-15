@@ -41,7 +41,7 @@
                     </div>
                 </form>
                 <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                     <li class="nav-item dropdown hidden-caret">
+                    <li class="nav-item dropdown hidden-caret">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="la la-envelope"></i>
@@ -54,7 +54,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">设置</a>
                         </div> -->
-                    </li> 
+                    </li>
                     <li class="nav-item dropdown hidden-caret">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -251,19 +251,28 @@
                                 <h4 class="card-title">工作小结</h4>
                                 <div id="tip"></div>
 
-                            <div style="display: inline-flex">
-{#                                    <p class="card-category">项目列表</p>#}
-                                    <button id ="btn_add" class="btn btn-success"
+                                <div style="display: inline-flex">
+                                    {#                                    <p class="card-category">项目列表</p>#}
+
+                                    <select id="queryDevice" data-live-search="true"
+                                            style="right: 230px; position: absolute; padding: 6px 20px;">
+                                        <option id = 2>查询1111</option>
+                                        <option id = 3>查询22</option>
+                                        <option id = 4>查询3333333</option>
+                                        <option id = 5>查询4444444</option>
+
+                                    </select>
+                                    <button id="btn_add" class="btn btn-success"
                                             style="right: 10px; position: absolute; padding: 6px 20px;">添加
                                     </button>
                                     <button class="btn btn-simple-info" id="look"
                                             style="right: 80px; position: absolute; padding: 6px 20px;">预览
                                     </button>
-                                    <button  class="btn btn-danger" id="down"
+                                    <button class="btn btn-danger" id="down"
                                             style="right: 150px; position: absolute; padding: 6px 20px;">MD
                                     </button>
                                 </div>
-</div>
+                            </div>
                             <div class="card-body ">
                                 <div class="table-full-width">
                                     <table class="table">
@@ -277,21 +286,20 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for i in listDate %}
+                                        {% for j,i in listDate.items() %}
                                             <tr>
+                                                <td>{{ i[0] }}</td>
                                                 <td>{{ i[1] }}</td>
-                                                <td class="{{ i[0] }}">{{ i[2] }}</td>
-                                                <td class="{{ i[0] }}">{{ i[3] }}</td>
-                                                <td class="{{ i[0] }}">{{ i[4] }}</td>
+                                                <td>{{ i[2] }}</td>
+                                                <td>{{ i[3] }}</td>
                                                 <td>
-
                                                     <div class="card-body" style="display: inline-flex">
 
                                                         <p class="demo">
-                                                            <button id="{{ i[0] }}" class="btn badge-light">修改</button>
+                                                            <button class="btn badge-light">修改</button>
                                                         </p>
                                                         <p class="demo">
-                                                            <button id="{{ i[0] }}" class="btn btn-danger">删除</button>
+                                                            <button class="btn btn-danger" id="{{ j }}">删除</button>
                                                         </p>
                                                     </div>
                                                 </td>
@@ -311,33 +319,33 @@
                 </div>
             </div>
         </div>
-{#        <footer class="footer">#}
-{#            <div class="container-fluid">#}
-{#                <nav class="pull-left">#}
-{#                    <ul class="nav">#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#">#}
-{#                                ThemeKita#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#">#}
-{#                                Help#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#license/#free-item">#}
-{#                                Licenses#}
-{#                            </a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </nav>#}
-{#                <div class="copyright ml-auto">#}
-{#                    Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"#}
-{#                                                                              href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>#}
-{#                </div>#}
-{#            </div>#}
-{#        </footer>#}
+        {#        <footer class="footer">#}
+        {#            <div class="container-fluid">#}
+        {#                <nav class="pull-left">#}
+        {#                    <ul class="nav">#}
+        {#                        <li class="nav-item">#}
+        {#                            <a class="nav-link" href="#">#}
+        {#                                ThemeKita#}
+        {#                            </a>#}
+        {#                        </li>#}
+        {#                        <li class="nav-item">#}
+        {#                            <a class="nav-link" href="#">#}
+        {#                                Help#}
+        {#                            </a>#}
+        {#                        </li>#}
+        {#                        <li class="nav-item">#}
+        {#                            <a class="nav-link" href="#license/#free-item">#}
+        {#                                Licenses#}
+        {#                            </a>#}
+        {#                        </li>#}
+        {#                    </ul>#}
+        {#                </nav>#}
+        {#                <div class="copyright ml-auto">#}
+        {#                    Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"#}
+        {#                                                                              href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </footer>#}
     </div>
 </div>
 </div>
@@ -368,34 +376,41 @@
 
 <!-- {#添加弹窗#} -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">新增</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">新增</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="txt_departmentname">本周工作重点</label>
-                        <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="请疯狂输出（建议一次一条）">
-                    </div>
-                    <div class="form-group">
-                        <label for="txt_departmentlevel">下周工作计划</label>
-                        <input type="text" name="txt_departmentlevel" class="form-control" id="txt_departmentlevel" placeholder="请大胆展望">
-                    </div>
-                    <div class="form-group">
-                        <label for="txt_statu">你是谁</label>
-                        <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="敢问你是哪位大神">
-                    </div>
+                <div class="form-group">
+                    <label for="txt_departmentname">本周工作重点</label>
+                    <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname"
+                           placeholder="请疯狂输出（建议一次一条）">
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
-                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                <div class="form-group">
+                    <label for="txt_departmentlevel">下周工作计划</label>
+                    <input type="text" name="txt_departmentlevel" class="form-control" id="txt_departmentlevel"
+                           placeholder="请大胆展望">
                 </div>
+                <div class="form-group">
+                    <label for="txt_statu">你是谁</label>
+                    <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="敢问你是哪位大神">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span
+                        class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span
+                        class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 

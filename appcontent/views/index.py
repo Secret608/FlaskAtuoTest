@@ -11,13 +11,12 @@ index = Blueprint('index', __name__)
 
 class data_list():
 
-    LIST_DATA = []
-    LIST_NUM = 0
+    LIST_DATA = {"0":{},"1":{},"2":{},"3":{}}
 
 @index.route('/index', methods=['GET'])
 def indexPage():
 
-    return render_template("index.html",listDate = data_list.LIST_DATA)
+    return render_template("index.html",listDate = data_list.LIST_DATA["0"])
 
 @index.route('/forms', methods=["GET", 'POST'])
 def forms():
@@ -57,26 +56,33 @@ def indexRun():
 @index.route('/index/save', methods=['post'])
 def indexSave():
 
-    if request.method=='POST':
-        name = request.form["name"]
-        future = request.form["future"]
-        now = request.form["now"]
-        if  future or now:
-            data_list.LIST_NUM = data_list.LIST_NUM + 1
-            data_list.LIST_DATA.append([data_list.LIST_NUM, time.strftime("%Y/%m/%d", time.localtime()),now,future,name])
-
-    return Response("OJBK")
+    num = request.form["num"]
+    name = request.form["name"]
+    future = request.form["future"]
+    now = request.form["now"]
+    data = data_list.LIST_DATA.setdefault(num,{})
+    data.update({len(data):[time.strftime("%Y/%m/%d", time.localtime()),now,future,name]})
+    print(data)
+    return jsonify(data)
 
 
 @index.route('/index/del', methods=['post'])
 def indexDel():
+
+    num = request.form["num"]
+    name = request.form["id"]
+    data = data_list.LIST_DATA.setdefault(num, {})
+    del data[int(name)]
+    return jsonify(data)
+
+
+# {a:{b:[],},}
+@index.route('/index/change', methods=['post'])
+def indexChange():
     if request.method=='POST':
-        name = request.form["id"]
-        for i in data_list.LIST_DATA:
-            if i[0] == int(name):
-                print(i)
-                data_list.LIST_DATA.remove(i)
-    return Response("OJBK")
+        name = request.form["num"]
+
+        return jsonify(data_list.LIST_DATA[name])
 
 @index.route('/index/down', methods=['get'])
 def indexDown():
@@ -90,8 +96,7 @@ def indexDown():
         for i in data_list.LIST_DATA:
             a = a +"&nbsp;&nbsp;"+ str(data_list.LIST_DATA.index(i)+1)+". "+i[2]+";<br>"
             b = b +"&nbsp;&nbsp;"+ str(data_list.LIST_DATA.index(i)+1)+". "+ i[3]+";<br>"
-        STR = '''
-        <table height="100" width="900" align="center" style="margin-left:2cm"> 
+        STR = '''<table height="100" width="900" align="center" style="margin-left:2cm"> 
             <tr style="background-color:LightBlue">
                 <th height="30" width="160">处室名称</th>
                 <th height="30" width="160">小组</th>

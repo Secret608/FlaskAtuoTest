@@ -1,5 +1,4 @@
-
-        <table height="100" width="900" align="center" style="margin-left:2cm"> 
+<table height="100" width="900" align="center" style="margin-left:2cm"> 
             <tr style="background-color:LightBlue">
                 <th height="30" width="160">处室名称</th>
                 <th height="30" width="160">小组</th>
@@ -10,11 +9,11 @@
                 <td>质量平台组</td>
                 <td align="left">
                      【本周工作重点】<br>
-                     &nbsp;&nbsp;1. asda;<br>&nbsp;&nbsp;2. asd;<br>
+                     
                 <br><br>
 
                      【下周工作计划】<br>
-                     &nbsp;&nbsp;1. asdad;<br>&nbsp;&nbsp;2. asd;<br> 
+                      
                 </td>
             </tr>
         </table>
