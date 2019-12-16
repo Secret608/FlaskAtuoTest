@@ -36,7 +36,9 @@ $(function () {
 });
 
 //先关闭接口
-$(function () {
+$(function (){
+
+    var j = -1;
 
     $(".demo>.badge-light,.card-header div .btn-danger,.nav-item").not(".btn.badge-light,.nav-item.active,.btn.btn-danger ").click(function () {
 
@@ -53,10 +55,47 @@ $(function () {
         $('#myModal').modal();
     });
 
-    //保存
-    $("#btn_submit").click(function () {
 
-        // console.log("Hello Runoob!");
+    function save(i,j){
+
+        if (i==1){
+            var a = j; 
+            $("tbody").empty();
+            var num = $("#queryDevice").prop('selectedIndex');
+            $.ajax({
+            async: false,//同步，异步
+            url: "/index/edit", //请求的服务端地址
+            data: {
+                "num": num,
+                "id": a,
+                "now": $("#txt_departmentname").val(),
+                "future": $("#txt_departmentlevel").val(),
+                "name": $("#txt_statu").val(),
+            },
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                //成功之后的处理，返回的数据就是 data
+                // $.parser.parse(tip);
+                $.each(data, function (idx, obj) {
+                    $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\" id="+idx +">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
+                    // $("#province").append("<option value=" + value + ">" + obj.name + "</option>");
+                });
+
+                console.log("申请成功");
+            },
+            error: function () {
+
+                // $.parser.parse(tip);
+                console.log("申请失败");
+                window.location = '/index';
+            }
+        
+        });
+        $('#myModal').modal();
+    }
+    else{
+
         $("tbody").empty();
         var a = $("#queryDevice").prop('selectedIndex');
         $.ajax({
@@ -72,7 +111,7 @@ $(function () {
             dataType: "json",
             success: function (data) {
                 $.each(data, function (idx, obj) {
-                $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
+                $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\" id="+idx +">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
                 // $("#province").append("<option value=" + value + ">" + obj.name + "</option>");
             });
 
@@ -81,18 +120,31 @@ $(function () {
                 // $.parser.parse(tip);
                 console.log("申请失败");
             }
-        });
+            });
 
         $('#myModal').modal();
-    });
+    };
+    
+}
+
+
+    //保存
+    $("#btn_submit").click(function () {  
+
+        if ($("#myModalLabel").text()=="修改"){
+            save(1,j);
+        }else{
+            save(0,-1);
+        }
+        
 });
 
-//报告跳转
-$(function () {
-    $(".demo>.btn-info").click(function () {
-        window.open("/static/Report/Demo.html");
-    });
-});
+// //报告跳转
+// $(function () {
+//     $(".demo>.btn-info").click(function () {
+//         window.open("/static/Report/Demo.html");
+//     });
+// });
 
 //权限控制
 $(".nav-item").click(function () {
@@ -118,7 +170,7 @@ $(document).on('click','.card-body>.demo:nth-child(2)>.btn',function(){
             // $.parser.parse(tip);
             $("tbody").empty();
             $.each(data, function (idx, obj) {
-                $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
+                $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\" id="+idx +">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
                 // $("#province").append("<option value=" + value + ">" + obj.name + "</option>");
                 // $("#"+idx).on("click", "#demo", function(){});
             });
@@ -136,15 +188,35 @@ $(document).on('click','.card-body>.demo:nth-child(2)>.btn',function(){
 //下载
 $("#look").click(function () {
 
-    window.open("/index/down");
+    var a = $("#queryDevice").prop('selectedIndex');
+    window.open("/index/see/"+a.toString()+ new Date().getTime());
     // window.open ("/index/down", "newwindow2", "height=1000, width=1000, top=500, left=500,toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
 });
 
+
 $("#down").click(function () {
+
+    var a = $("#queryDevice").prop('selectedIndex');
+    var link = document.createElement('a');
+    //设置下载的文件名
+    link.download = 'MD.md';
+    link.style.display = 'none';
+    //设置下载路径
+    link.href = "/index/down/"+a.toString();
+    //触发点击
+    document.body.appendChild(link);
+    link.click();
+    //移除节点
+    document.body.removeChild(link);
+
+});
+
+//下载全部
+$(".btn.btn-secondary").click(function () {
 
     var link = document.createElement('a');
     //设置下载的文件名
-    link.download = 'hh.md';
+    link.download = 'MDALL.md';
     link.style.display = 'none';
     //设置下载路径
     link.href = "/index/down";
@@ -173,7 +245,7 @@ $("#queryDevice").change(function () {
             //成功之后的处理，返回的数据就是 data
             // $.parser.parse(tip);
             $.each(data, function (idx, obj) {
-                $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
+                $("tbody").append("<tr><td>"+obj[0]+"</td><td>"+obj[1]+"</td><td>"+obj[2]+"</td><td>"+obj[3]+"<td><div class=\"card-body\" style=\"display: inline-flex\"><p class=\"demo\"><button class=\"btn badge-light\" id="+idx +">修改</button></p><p class=\"demo\"><button class=\"btn btn-danger\" id="+idx +">删除</button></p></div></td></tr>");
                 // $("#province").append("<option value=" + value + ">" + obj.name + "</option>");
             });
 
@@ -190,14 +262,21 @@ $("#queryDevice").change(function () {
     });
 
 });
+
 //修改
-// $(".card-body > .demo>.btn.badge-light").click(function(){
-//
-//         var i = "."+$(this).attr("id");
-//         console.log(i);
-//         $("#myModalLabel").text("修改");
-//         $('#myModal').modal();
-//         $("#txt_departmentname").val($(i).text());
-//         $("#txt_departmentlevel").val($(i).next().text());
-//         $("#txt_statu").val($(i).next().next().text());
-// });
+$(document).on('click',".card-body > .demo>.btn.badge-light",function(){
+
+        $("#myModalLabel").text("修改");
+        $('#myModal').modal();
+        var a = $(this).attr("id"); 
+        var b = $(this).parent().parent().parent().parent().find("td").eq(1).text();
+        var c = $(this).parent().parent().parent().parent().find("td").eq(2).text();
+        var d = $(this).parent().parent().parent().parent().find("td").eq(3).text();
+        $("#txt_departmentname").val(b);
+        $("#txt_departmentlevel").val(c);
+        $("#txt_statu").val(d);
+        j = a;
+        
+});
+
+});
