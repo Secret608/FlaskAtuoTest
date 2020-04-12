@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, redirect, url_for, render_template, request, Response
-import os
+import os,io,sys
 from appcontent.com.Path import GetPath
 from appcontent.com.Log import Getlog
 from appcontent.views.login import login
 from appcontent.views.index import index
 from appcontent import services
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 app = Flask(__name__)
 
@@ -19,7 +21,9 @@ class Main():
     def add_views_path(self):
         self.app.register_blueprint(login, url_prefix='/')
         self.app.register_blueprint(index, url_prefix='/')
-
+    
+    def test_hello(self):
+        print("hello")
 
 if __name__ == '__main__':
 
